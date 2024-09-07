@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Selection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9); /* Slightly more transparent white */
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            margin: 0 1rem;
+            position: relative;
+        }
+
+        .card h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1.5rem;
+            color: #111827;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .card p {
+            font-size: 1.125rem;
+            color: #4B5563;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .card button {
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden; /* For the ripple effect */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card button:hover {
+            background-color: #2563EB;
+            transform: translateY(-3px); /* Slight lift effect */
+        }
+
+        .card button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4); /* Focus ring */
+        }
+
+        .card button.secondary {
+            background-color: #10B981;
+        }
+
+        .card button.secondary:hover {
+            background-color: #059669;
+            transform: translateY(-3px);
+        }
+
+        .card button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            width: 300%;
+            height: 300%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 80%);
+            transition: width 0.4s, height 0.4s;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            z-index: 0;
+        }
+
+        .card button:hover::after {
+            width: 400%;
+            height: 400%;
+            opacity: 1;
+        }
+
+        .card button span {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* Increased space between icon and text */
+        }
+
+        .card button i {
+            font-size: 1.5rem; /* Larger icon size */
+        }
+    </style>
+</head>
+
+<body class="bg-cover bg-center h-screen" style="background-image: url('https://www.livesmallbemore.blog/wp-content/uploads/2017/08/library-488690_1920.jpg');">
+    <!-- Selection Page -->
+    <div class="flex items-center justify-center h-screen bg-gray-900 bg-opacity-70">
+        <div class="card">
+            <h2 class="font-bold"><i class="fas fa-user-plus"></i> Select Your Role</h2>
+            <p class="text-gray-700 mb-8">Please choose whether you want to sign up as a teacher or a student.</p>
+            <a href="/teacher_signup/">
+                <button class="button-primary"><i class="fas fa-chalkboard-teacher"></i><span>Sign Up as Teacher</span></button>
+            </a>
+            <a href="/student_signup/">
+                <button class="button-secondary"><i class="fas fa-user-graduate"></i><span>Sign Up as Student</span></button>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
