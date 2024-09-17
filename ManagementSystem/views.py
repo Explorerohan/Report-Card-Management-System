@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 
-# Create your views here.
+# Creating my views here.
 def signup_page(request):
     return render(request, 'signup_page.html')
 
