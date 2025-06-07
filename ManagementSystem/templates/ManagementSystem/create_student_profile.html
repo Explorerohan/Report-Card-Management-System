@@ -1,0 +1,84 @@
+{% extends 'ManagementSystem/base.html' %}
+
+{% block title %}Create Student Profile - Academic Management System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-user-graduate me-2"></i>
+                    Create Student Profile
+                </h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.roll_number.id_for_label }}" class="form-label">
+                                Roll Number
+                            </label>
+                            {{ form.roll_number.errors }}
+                            {{ form.roll_number }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.class_name.id_for_label }}" class="form-label">
+                                Class
+                            </label>
+                            {{ form.class_name.errors }}
+                            {{ form.class_name }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.section.id_for_label }}" class="form-label">
+                                Section
+                            </label>
+                            {{ form.section.errors }}
+                            {{ form.section }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.date_of_birth.id_for_label }}" class="form-label">
+                                Date of Birth
+                            </label>
+                            {{ form.date_of_birth.errors }}
+                            {{ form.date_of_birth }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.parent_name.id_for_label }}" class="form-label">
+                                Parent Name
+                            </label>
+                            {{ form.parent_name.errors }}
+                            {{ form.parent_name }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.parent_phone.id_for_label }}" class="form-label">
+                                Parent Phone
+                            </label>
+                            {{ form.parent_phone.errors }}
+                            {{ form.parent_phone }}
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-info">
+                            <i class="fas fa-save me-2"></i>
+                            Create Profile
+                        </button>
+                        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times me-2"></i>
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

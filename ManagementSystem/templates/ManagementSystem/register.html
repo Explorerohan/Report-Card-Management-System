@@ -1,0 +1,238 @@
+{% extends 'ManagementSystem/base.html' %}
+
+{% block title %}Register User - Academic Management System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-user-plus me-2"></i>
+                    Register New User
+                </h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.first_name.id_for_label }}" class="form-label">
+                                First Name
+                            </label>
+                            {{ form.first_name.errors }}
+                            {{ form.first_name }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.last_name.id_for_label }}" class="form-label">
+                                Last Name
+                            </label>
+                            {{ form.last_name.errors }}
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.username.id_for_label }}" class="form-label">
+                                Username
+                            </label>
+                            {{ form.username.errors }}
+                            {{ form.username }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.email.id_for_label }}" class="form-label">
+                                Email
+                            </label>
+                            {{ form.email.errors }}
+                            {{ form.email }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.password1.id_for_label }}" class="form-label">
+                                Password
+                            </label>
+                            {{ form.password1.errors }}
+                            {{ form.password1 }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.password2.id_for_label }}" class="form-label">
+                                Confirm Password
+                            </label>
+                            {{ form.password2.errors }}
+                            {{ form.password2 }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.role.id_for_label }}" class="form-label">
+                                <i class="fas fa-user-tag me-2"></i>User Type
+                            </label>
+                            {{ form.role.errors }}
+                            {{ form.role }}
+                            {% if form.role.help_text %}
+                            <div class="form-text text-muted">
+                                <i class="fas fa-info-circle me-1"></i>
+                                {{ form.role.help_text }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="{{ form.phone_number.id_for_label }}" class="form-label">
+                                Phone Number
+                            </label>
+                            {{ form.phone_number.errors }}
+                            {{ form.phone_number }}
+                        </div>
+                    </div>
+
+                    <!-- Student-specific fields -->
+                    <div id="studentFields" style="display: none;">
+                        <div class="card mb-3">
+                            <div class="card-header bg-info text-white">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-user-graduate me-2"></i>
+                                    Student Information
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.roll_number.id_for_label }}" class="form-label">
+                                            Roll Number
+                                        </label>
+                                        {{ form.roll_number.errors }}
+                                        {{ form.roll_number }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.class_name.id_for_label }}" class="form-label">
+                                            Class
+                                        </label>
+                                        {{ form.class_name.errors }}
+                                        {{ form.class_name }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.section.id_for_label }}" class="form-label">
+                                            Section
+                                        </label>
+                                        {{ form.section.errors }}
+                                        {{ form.section }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.parent_name.id_for_label }}" class="form-label">
+                                            Parent Name
+                                        </label>
+                                        {{ form.parent_name.errors }}
+                                        {{ form.parent_name }}
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="{{ form.parent_phone.id_for_label }}" class="form-label">
+                                        Parent Phone
+                                    </label>
+                                    {{ form.parent_phone.errors }}
+                                    {{ form.parent_phone }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Teacher-specific fields -->
+                    <div id="teacherFields" style="display: none;">
+                        <div class="card mb-3">
+                            <div class="card-header bg-success text-white">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-chalkboard-teacher me-2"></i>
+                                    Teacher Information
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.employee_id.id_for_label }}" class="form-label">
+                                            Employee ID
+                                        </label>
+                                        {{ form.employee_id.errors }}
+                                        {{ form.employee_id }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.subject_specialization.id_for_label }}" class="form-label">
+                                            Subject Specialization
+                                        </label>
+                                        {{ form.subject_specialization.errors }}
+                                        {{ form.subject_specialization }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.qualification.id_for_label }}" class="form-label">
+                                            Qualification
+                                        </label>
+                                        {{ form.qualification.errors }}
+                                        {{ form.qualification }}
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="{{ form.experience_years.id_for_label }}" class="form-label">
+                                            Years of Experience
+                                        </label>
+                                        {{ form.experience_years.errors }}
+                                        {{ form.experience_years }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="{{ form.address.id_for_label }}" class="form-label">
+                            Address
+                        </label>
+                        {{ form.address.errors }}
+                        {{ form.address }}
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-user-plus me-2"></i>
+                            Register User
+                        </button>
+                        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-times me-2"></i>
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<script>
+function toggleRoleFields() {
+    const role = document.querySelector('#{{ form.role.id_for_label }}').value;
+    const studentFields = document.getElementById('studentFields');
+    const teacherFields = document.getElementById('teacherFields');
+
+    if (role === 'student') {
+        studentFields.style.display = 'block';
+        teacherFields.style.display = 'none';
+    } else if (role === 'teacher') {
+        studentFields.style.display = 'none';
+        teacherFields.style.display = 'block';
+    } else {
+        studentFields.style.display = 'none';
+        teacherFields.style.display = 'none';
+    }
+}
+
+// Call on page load to set initial state
+document.addEventListener('DOMContentLoaded', toggleRoleFields);
+</script>
+{% endblock %}
+{% endblock %} 

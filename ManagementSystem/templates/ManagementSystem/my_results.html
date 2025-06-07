@@ -1,0 +1,66 @@
+{% extends 'ManagementSystem/base.html' %}
+
+{% block title %}My Results - Academic Management System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-line me-2"></i>
+                    My Academic Results
+                </h5>
+            </div>
+            <div class="card-body">
+                {% if results %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Marks Obtained</th>
+                                    <th>Total Marks</th>
+                                    <th>Percentage</th>
+                                    <th>Grade</th>
+                                    <th>Remarks</th>
+                                    <th>Teacher</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for result in results %}
+                                    <tr>
+                                        <td>{{ result.subject.name }}</td>
+                                        <td>{{ result.marks_obtained }}</td>
+                                        <td>{{ result.total_marks }}</td>
+                                        <td>
+                                            {% with percentage=result.marks_obtained|div:result.total_marks|mul:100 %}
+                                                {{ percentage|floatformat:1 }}%
+                                            {% endwith %}
+                                        </td>
+                                        <td>
+                                            <span class="badge {% if result.grade == 'A' %}bg-success{% elif result.grade == 'B' %}bg-info{% elif result.grade == 'C' %}bg-warning{% else %}bg-danger{% endif %}">
+                                                {{ result.grade }}
+                                            </span>
+                                        </td>
+                                        <td>{{ result.remarks }}</td>
+                                        <td>{{ result.teacher.user_profile.user.get_full_name }}</td>
+                                        <td>{{ result.created_at|date:"M d, Y" }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="fas fa-clipboard-list fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No results available yet.</h5>
+                        <p class="text-muted">Your teachers will add your results here.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
